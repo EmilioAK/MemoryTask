@@ -3,6 +3,7 @@ const READING_TIME = 5; // Both given in seconds
 const ANSWER_TIME = 5;
 const KEY = 127; // Used to obfuscate the answer
 
+document.querySelector("#main-container").style.display = "block";
 document.querySelector("#wordbox").innerHTML = `You will be given a list of words to memorize. You have ${READING_TIME} seconds to do this. Afterwards you will have ${ANSWER_TIME} seconds to write down the words you remember!`;
 document.querySelector("#answer").style.display = "none";
 document.querySelector("#submitbutton").style.display = "none";
@@ -36,8 +37,8 @@ const presentTask = function () {
         test_section_elements();
         setTimeout(() => {
             get_results();
-        }, READING_TIME * 1000); // Since it expects milliseconds and reading and answer_time are in seconds
-      }, ANSWER_TIME * 1000);
+        }, ANSWER_TIME * 1000); // Since it expects milliseconds and reading and answer_time are in seconds
+      }, READING_TIME * 1000);
     };
   
     read_section_elements();
@@ -50,7 +51,7 @@ const presentTask = function () {
 
 const read_section_elements = function () {
     document.querySelector("#startbutton").style.display = "none";
-    document.querySelector("#wordbox").innerHTML = WORDS;
+    document.querySelector("#wordbox").innerHTML = WORDS.join(', ');
     document.querySelector("#timerContainer").style.display = "block";
 
 }
