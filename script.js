@@ -1,6 +1,6 @@
 const WORDS = ["Word1", "Word2", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3"];
-const READING_TIME = 5; // Both given in seconds
-const ANSWER_TIME = 5;
+const READING_TIME = 120; // Both given in seconds
+const ANSWER_TIME = 120;
 const KEY = 127; // Used to obfuscate the answer
 
 document.querySelector("#main-container").style.display = "block";
