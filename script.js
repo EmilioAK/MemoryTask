@@ -10,17 +10,23 @@ document.querySelector("#submitbutton").style.display = "none";
 document.querySelector(".scorebox").style.display = "none";
 document.querySelector("#timerContainer").style.display = "none";
 
+const toMinutesAndSeconds = function (time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return `${minutes}:${seconds}`;
+}
+
 const presentTask = function () {
     let interval_id;
     let reading_time_timer = READING_TIME;
     let answer_time_timer = ANSWER_TIME;
 
     const updateClock = function () {
-      if (reading_time_timer > 0) {
-        document.getElementById("timer").textContent = reading_time_timer;
+        if (reading_time_timer > 0) {
+        document.getElementById("timer").textContent = toMinutesAndSeconds(reading_time_timer);
         reading_time_timer -= 1;
       } else if (answer_time_timer > 0) {
-        document.getElementById("timer").textContent = answer_time_timer;
+        document.getElementById("timer").textContent = toMinutesAndSeconds(answer_time_timer);
         answer_time_timer -= 1;
       } else {
         clearInterval(interval_id);
