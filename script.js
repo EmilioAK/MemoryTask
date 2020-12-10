@@ -63,7 +63,7 @@ const score_user = function (user_words) {
 
 const get_user_input = function () {
     const user_input = document.getElementById("answer").value;
-    const user_input_array = user_input.split(/, | |,/);
+    const user_input_array = user_input.split(/[,|\s]+/);
     return user_input_array;
 }
 
