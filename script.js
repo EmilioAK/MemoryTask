@@ -9,9 +9,6 @@ document.querySelector("#answer").style.display = "none";
 document.querySelector("#submitbutton").style.display = "none";
 document.querySelector(".scorebox").style.display = "none";
 document.querySelector("#timerContainer").style.display = "none";
-document.querySelector("#submitbutton").addEventListener("click", function() {
-    get_results();
-});
 
 const presentTask = function () {
     let interval_id;
@@ -46,7 +43,9 @@ const presentTask = function () {
   }
   
 document.getElementById("startbutton").addEventListener("click", presentTask);
-
+document.querySelector("#submitbutton").addEventListener("click", function() {
+    get_results();
+});
 
 const read_section_elements = function () {
     document.querySelector("#startbutton").style.display = "none";
