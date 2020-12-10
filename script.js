@@ -13,19 +13,17 @@ document.querySelector("#submitbutton").addEventListener("click", function() {
     get_results();
 });
 
-const timer_text = document.getElementById("timer");
-const start_button = document.getElementById("startbutton");
-let interval_id;
-let reading_time_timer = READING_TIME;
-let answer_time_timer = ANSWER_TIME;
-
 const presentTask = function () {
+    let interval_id;
+    let reading_time_timer = READING_TIME;
+    let answer_time_timer = ANSWER_TIME;
+
     const updateClock = function () {
       if (reading_time_timer > 0) {
-        timer_text.textContent = reading_time_timer;
+        document.getElementById("timer").textContent = reading_time_timer;
         reading_time_timer -= 1;
       } else if (answer_time_timer > 0) {
-        timer_text.textContent = answer_time_timer;
+        document.getElementById("timer").textContent = answer_time_timer;
         answer_time_timer -= 1;
       } else {
         clearInterval(interval_id);
@@ -47,7 +45,7 @@ const presentTask = function () {
     interval_id = setInterval(updateClock, 1000);
   }
   
-  start_button.addEventListener("click", presentTask);
+document.getElementById("startbutton").addEventListener("click", presentTask);
 
 
 const read_section_elements = function () {
@@ -82,7 +80,7 @@ const get_user_input = function () {
 const get_results = function () {
     document.querySelector("#submitbutton").style.display = "none";
     document.querySelector("#answer").style.display = "none";
-    document.querySelector("#score").innerHTML = score_user(get_user_input());
+    document.querySelector("#score").innerHTML = "#" + score_user(get_user_input());
     document.querySelector(".scorebox").style.display = "block";
     document.querySelector("#timerContainer").style.display = "none";
 }
