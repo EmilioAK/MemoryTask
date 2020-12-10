@@ -11,9 +11,9 @@ document.querySelector(".scorebox").style.display = "none";
 document.querySelector("#timerContainer").style.display = "none";
 
 const toMinutesAndSeconds = function (time) {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-    return `${minutes}:${seconds}`;
+    const MINUTES = Math.floor(time / 60);
+    const SECONDS = time % 60;
+    return `${MINUTES}:${SECONDS}`;
 }
 
 const presentTask = function () {
@@ -33,40 +33,40 @@ const presentTask = function () {
       }
     };
   
-    const read_section_end = function () {
+    const readSectionEnd = function () {
       setTimeout(() => {
-        test_section_elements();
+        testSectionElements();
         setTimeout(() => {
-            get_results();
+            getResults();
         }, ANSWER_TIME * 1000); // Since it expects milliseconds and reading and answer_time are in seconds
       }, READING_TIME * 1000);
     };
   
-    read_section_elements();
-    read_section_end();
+    readSectionElements();
+    readSectionEnd();
     updateClock();
     interval_id = setInterval(updateClock, 1000);
   }
   
 document.getElementById("startbutton").addEventListener("click", presentTask);
 document.querySelector("#submitbutton").addEventListener("click", function() {
-    get_results();
+    getResults();
 });
 
-const read_section_elements = function () {
+const readSectionElements = function () {
     document.querySelector("#startbutton").style.display = "none";
     document.querySelector("#wordbox").innerHTML = WORDS.join(', ');
     document.querySelector("#timerContainer").style.display = "block";
 
 }
 
-const test_section_elements = function () {
+const testSectionElements = function () {
     document.querySelector("#submitbutton").style.display = "block";
     document.querySelector("#answer").style.display = "block";
     document.querySelector("#wordbox").style.display = "none";
 }
 
-const score_user = function (user_words) {
+const scoreUser = function (user_words) {
     let score = 0;
     for (const word of user_words) {
         if (WORDS.includes(word)) {
@@ -76,16 +76,16 @@ const score_user = function (user_words) {
     return score ^ KEY;
 }   
 
-const get_user_input = function () {
-    const user_input = document.getElementById("answer").value;
-    const user_input_array = user_input.split(/[,|\s]+/);
-    return user_input_array;
+const getUserInput = function () {
+    const USER_INPUT = document.getElementById("answer").value;
+    const USER_INPUT_ARRAY = USER_INPUT.split(/[,|\s]+/);
+    return USER_INPUT_ARRAY;
 }
 
-const get_results = function () {
+const getResults = function () {
     document.querySelector("#submitbutton").style.display = "none";
     document.querySelector("#answer").style.display = "none";
-    document.querySelector("#score").innerHTML = "#" + score_user(get_user_input());
+    document.querySelector("#score").innerHTML = "#" + scoreUser(getUserInput());
     document.querySelector(".scorebox").style.display = "block";
     document.querySelector("#timerContainer").style.display = "none";
 }
