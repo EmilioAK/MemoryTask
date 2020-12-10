@@ -17,19 +17,19 @@ const toMinutesAndSeconds = function (time) {
 }
 
 const presentTask = function () {
-    let interval_id;
-    let reading_time_timer = READING_TIME;
-    let answer_time_timer = ANSWER_TIME;
+    let intervalID;
+    let readingTimeTimer = READING_TIME;
+    let answerTimeTimer = ANSWER_TIME;
 
     const updateClock = function () {
-        if (reading_time_timer > 0) {
-        document.getElementById("timer").textContent = toMinutesAndSeconds(reading_time_timer);
-        reading_time_timer -= 1;
-      } else if (answer_time_timer > 0) {
-        document.getElementById("timer").textContent = toMinutesAndSeconds(answer_time_timer);
-        answer_time_timer -= 1;
+        if (readingTimeTimer > 0) {
+        document.getElementById("timer").textContent = toMinutesAndSeconds(readingTimeTimer);
+        readingTimeTimer -= 1;
+      } else if (answerTimeTimer > 0) {
+        document.getElementById("timer").textContent = toMinutesAndSeconds(answerTimeTimer);
+        answerTimeTimer -= 1;
       } else {
-        clearInterval(interval_id);
+        clearInterval(intervalID);
       }
     };
   
@@ -45,7 +45,7 @@ const presentTask = function () {
     readSectionElements();
     readSectionEnd();
     updateClock();
-    interval_id = setInterval(updateClock, 1000);
+    intervalID = setInterval(updateClock, 1000);
   }
   
 document.getElementById("startbutton").addEventListener("click", presentTask);
@@ -66,9 +66,9 @@ const testSectionElements = function () {
     document.querySelector("#wordbox").style.display = "none";
 }
 
-const scoreUser = function (user_words) {
+const scoreUser = function (userWords) {
     let score = 0;
-    for (const word of user_words) {
+    for (const word of userWords) {
         if (WORDS.includes(word)) {
           score += 1;  
         }
