@@ -43,6 +43,7 @@ const presentTask = function () {
   
     read_section_elements();
     read_section_end();
+    updateClock();
     interval_id = setInterval(updateClock, 1000);
   }
   
