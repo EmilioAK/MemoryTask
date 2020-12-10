@@ -1,9 +1,9 @@
-const WORDS = ["Word1", "Word2", "Word3"];
+const WORDS = ["Word1", "Word2", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3"];
 const READING_TIME = 5; // Both given in seconds
 const ANSWER_TIME = 5;
 const KEY = 127; // Used to obfuscate the answer
 
-document.querySelector("#wordbox").innerHTML = "You will be given a list of words to memorize. You have 2 minutes to do this.";
+document.querySelector("#wordbox").innerHTML = `You will be given a list of words to memorize. You have ${READING_TIME} minutes to do this. Afterwards you will have ${ANSWER_TIME} minutes to write down the words you remember!`;
 document.querySelector("#answer").style.display = "none";
 document.querySelector("#submitbutton").style.display = "none";
 document.querySelector(".scorebox").style.display = "none";
