@@ -1,4 +1,7 @@
-const WORDS = ["Word1", "Word2", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3"];
+WORD_LIST_1 = ["Word1", "Word2", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3", "Word3"];
+WORD_LIST_2 = ["Blurb1", "Blurb2", "Blurb3", "Blurb4"];
+
+const WORDS = (window.location.hash ? WORD_LIST_2 : WORD_LIST_1);
 const READING_TIME = 120; // Both given in seconds
 const ANSWER_TIME = 120;
 const KEY = 127; // Used to obfuscate the answer
