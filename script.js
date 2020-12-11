@@ -34,7 +34,7 @@ const presentTask = function () {
       } else {
         clearInterval(intervalID);
       }
-    };
+    }
   
     const readSectionEnd = function () {
       setTimeout(() => {
@@ -43,7 +43,7 @@ const presentTask = function () {
             getResults();
         }, ANSWER_TIME * 1000); // Since it expects milliseconds and reading and answer_time are in seconds
       }, READING_TIME * 1000);
-    };
+    }
   
     readSectionElements();
     readSectionEnd();
