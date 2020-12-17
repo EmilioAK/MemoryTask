@@ -71,7 +71,7 @@ const testSectionElements = function () {
 
 const scoreUser = function (userWords) {
     let score = 0;
-    for (const word of userWords) {
+    for (let word of userWords) {
         if (WORDS.includes(word)) {
           score += 1;  
         }
