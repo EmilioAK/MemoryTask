@@ -2,8 +2,8 @@ const WORD_LIST_1 = ["buyer", "secret", "base", "night", "because", "away", "fol
 const WORD_LIST_2 = ["duty", "wink", "jaguar", "session", "any", "theory", "renew", "vessel", "soul", "produce", "glance", "nerve", "creek", "since", "beauty", "panel", "twenty", "half", "smooth", "ozone", "road", "bitter", "burger", "alpha"];
 
 const WORDS = (window.location.hash ? WORD_LIST_2 : WORD_LIST_1);
-const READING_TIME = 1; // Both given in seconds
-const ANSWER_TIME = 1;
+const READING_TIME = 120; // Both given in seconds
+const ANSWER_TIME = 120;
 const KEY = 127; // Used to obfuscate the answer
 
 const formatTime = function (time) {
