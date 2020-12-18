@@ -14,8 +14,8 @@ document.querySelector(".scorebox").style.display = "none";
 document.querySelector("#timerContainer").style.display = "none";
 
 const toMinutesAndSeconds = function (time) {
-    const MINUTES = Math.floor(time / 60);
-    const SECONDS = time % 60;
+    const MINUTES = String(Math.floor(time / 60));
+    const SECONDS = String(time % 60);
     return `${MINUTES}:${SECONDS}`;
 }
 
