@@ -2,8 +2,8 @@ const WORD_LIST_1 = ["buyer", "secret", "base", "night", "because", "away", "fol
 const WORD_LIST_2 = ["duty", "wink", "jaguar", "session", "any", "theory", "renew", "vessel", "soul", "produce", "glance", "nerve", "creek", "since", "beauty", "panel", "twenty", "half", "smooth", "ozone", "road", "bitter", "burger", "alpha"];
 
 const WORDS = (window.location.hash ? WORD_LIST_2 : WORD_LIST_1);
-const READING_TIME = 120; // Both given in seconds
-const ANSWER_TIME = 120;
+const READING_TIME = 1; // Both given in seconds
+const ANSWER_TIME = 1;
 const KEY = 127; // Used to obfuscate the answer
 
 const formatTime = function (time) {
@@ -16,16 +16,18 @@ const formatTime = function (time) {
   };
 }
 
+const toPlural = (count, noun, suffix = 's') => `${noun}${count !== 1 ? suffix : ''}`; //Makes a word the plural form given the number
+
 const toWordboxString = function (minutesAndSecondsObject) {
   // Expects the object from formatTime()
   const MINUTES = minutesAndSecondsObject.minutes;
   const SECONDS = minutesAndSecondsObject.seconds;
   if (MINUTES && SECONDS) {
-      return `${MINUTES} minutes and ${SECONDS} seconds`
+      return `${MINUTES} ${toPlural(MINUTES, "minute")} and ${SECONDS} ${toPlural(SECONDS, "second")}`
   } else if (MINUTES) {
-      return `${MINUTES} minutes`
+      return `${MINUTES} ${toPlural(MINUTES, "minute")}`
   } else {
-      return `${SECONDS} seconds`
+      return `${SECONDS} ${toPlural(SECONDS, "second")}`
   }
 }
 
