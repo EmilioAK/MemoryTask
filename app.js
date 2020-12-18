@@ -15,7 +15,7 @@ document.querySelector("#timerContainer").style.display = "none";
 
 const toMinutesAndSeconds = function (time) {
     const MINUTES = String(Math.floor(time / 60));
-    const SECONDS = String(time % 60);
+    const SECONDS = String(time % 60).padStart(2, "0");
     return `${MINUTES}:${SECONDS}`;
 }
 
