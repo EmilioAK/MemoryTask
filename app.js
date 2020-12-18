@@ -6,18 +6,42 @@ const READING_TIME = 120; // Both given in seconds
 const ANSWER_TIME = 120;
 const KEY = 127; // Used to obfuscate the answer
 
+const timeToMinutesAndSeconds = function (time) {
+  // Can easily be extended to include hours, days, etc.
+  const SECONDS = time % 60;
+  const MINUTES = Math.floor(time / 60);
+  return {
+    minutes: MINUTES,
+    seconds: SECONDS
+  };
+}
+
+const toWordboxString = function (minutesAndSecondsObject) {
+  // Expects the object from timeToMinutesAndSeconds()
+  const MINUTES = minutesAndSecondsObject.minutes;
+  const SECONDS = minutesAndSecondsObject.seconds;
+  if (MINUTES && SECONDS) {
+      return `${MINUTES} minutes and ${SECONDS} seconds`
+  } else if (MINUTES) {
+      return `${MINUTES} minutes`
+  } else {
+      return `${SECONDS} seconds`
+  }
+}
+
+const toTimerString = function (minutesAndSecondsObject) {
+  // Expects the object from timeToMinutesAndSeconds()
+  const MINUTES = String(minutesAndSecondsObject.minutes);
+  const SECONDS = String(minutesAndSecondsObject.seconds).padStart(2, "0"); // padStart adds padding so that it displays something like 01 instead of just 1 in single digit seconds
+  return `${MINUTES}:${SECONDS}`;
+}
+
 document.querySelector("#main-container").style.display = "block";
-document.querySelector("#wordbox").innerHTML = `You will be given a list of words to memorize. You have ${READING_TIME} seconds to do this. Afterwards you will have ${ANSWER_TIME} seconds to write down the words you remember!`;
+document.querySelector("#wordbox").innerHTML = `You will be given a list of words to memorize. You have ${toWordboxString(timeToMinutesAndSeconds(READING_TIME))} to do this. Afterwards you will have ${toWordboxString(timeToMinutesAndSeconds(ANSWER_TIME))} to write down the words you remember!`;
 document.querySelector("#answer").style.display = "none";
 document.querySelector("#submitbutton").style.display = "none";
 document.querySelector(".scorebox").style.display = "none";
 document.querySelector("#timerContainer").style.display = "none";
-
-const toMinutesAndSeconds = function (time) {
-    const MINUTES = String(Math.floor(time / 60));
-    const SECONDS = String(time % 60).padStart(2, "0"); // padStart adds padding so that it displays something like 01 instead of just 1 in single digit seconds
-    return `${MINUTES}:${SECONDS}`;
-}
 
 const presentTask = function () {
     let intervalID;
@@ -26,10 +50,10 @@ const presentTask = function () {
 
     const updateClock = function () {
         if (readingTimeTimer > 0) {
-        document.getElementById("timer").textContent = toMinutesAndSeconds(readingTimeTimer);
+        document.getElementById("timer").textContent = toTimerString(timeToMinutesAndSeconds(readingTimeTimer));
         readingTimeTimer -= 1;
       } else if (answerTimeTimer > 0) {
-        document.getElementById("timer").textContent = toMinutesAndSeconds(answerTimeTimer);
+        document.getElementById("timer").textContent = toTimerString(timeToMinutesAndSeconds(answerTimeTimer));
         answerTimeTimer -= 1;
       } else {
         clearInterval(intervalID);
