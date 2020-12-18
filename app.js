@@ -6,7 +6,7 @@ const READING_TIME = 120; // Both given in seconds
 const ANSWER_TIME = 120;
 const KEY = 127; // Used to obfuscate the answer
 
-const timeToMinutesAndSeconds = function (time) {
+const formatTime = function (time) {
   // Can easily be extended to include hours, days, etc.
   const SECONDS = time % 60;
   const MINUTES = Math.floor(time / 60);
@@ -17,7 +17,7 @@ const timeToMinutesAndSeconds = function (time) {
 }
 
 const toWordboxString = function (minutesAndSecondsObject) {
-  // Expects the object from timeToMinutesAndSeconds()
+  // Expects the object from formatTime()
   const MINUTES = minutesAndSecondsObject.minutes;
   const SECONDS = minutesAndSecondsObject.seconds;
   if (MINUTES && SECONDS) {
@@ -30,14 +30,14 @@ const toWordboxString = function (minutesAndSecondsObject) {
 }
 
 const toTimerString = function (minutesAndSecondsObject) {
-  // Expects the object from timeToMinutesAndSeconds()
+  // Expects the object from formatTime()
   const MINUTES = String(minutesAndSecondsObject.minutes);
   const SECONDS = String(minutesAndSecondsObject.seconds).padStart(2, "0"); // padStart adds padding so that it displays something like 01 instead of just 1 in single digit seconds
   return `${MINUTES}:${SECONDS}`;
 }
 
 document.querySelector("#main-container").style.display = "block";
-document.querySelector("#wordbox").innerHTML = `You will be given a list of words to memorize. You have ${toWordboxString(timeToMinutesAndSeconds(READING_TIME))} to do this. Afterwards you will have ${toWordboxString(timeToMinutesAndSeconds(ANSWER_TIME))} to write down the words you remember!`;
+document.querySelector("#wordbox").innerHTML = `You will be given a list of words to memorize. You have ${toWordboxString(formatTime(READING_TIME))} to do this. Afterwards you will have ${toWordboxString(formatTime(ANSWER_TIME))} to write down the words you remember!`;
 document.querySelector("#answer").style.display = "none";
 document.querySelector("#submitbutton").style.display = "none";
 document.querySelector(".scorebox").style.display = "none";
@@ -50,10 +50,10 @@ const presentTask = function () {
 
     const updateClock = function () {
         if (readingTimeTimer > 0) {
-        document.getElementById("timer").textContent = toTimerString(timeToMinutesAndSeconds(readingTimeTimer));
+        document.getElementById("timer").textContent = toTimerString(formatTime(readingTimeTimer));
         readingTimeTimer -= 1;
       } else if (answerTimeTimer > 0) {
-        document.getElementById("timer").textContent = toTimerString(timeToMinutesAndSeconds(answerTimeTimer));
+        document.getElementById("timer").textContent = toTimerString(formatTime(answerTimeTimer));
         answerTimeTimer -= 1;
       } else {
         clearInterval(intervalID);
