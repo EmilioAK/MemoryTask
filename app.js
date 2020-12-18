@@ -39,7 +39,8 @@ const toTimerString = function (minutesAndSecondsObject) {
 }
 
 document.querySelector("#main-container").style.display = "block";
-document.querySelector("#wordbox").innerHTML = `You will be given a list of words to memorize. You have ${toWordboxString(formatTime(READING_TIME))} to do this. Afterwards you will have ${toWordboxString(formatTime(ANSWER_TIME))} to write down the words you remember!`;
+document.querySelector("#readingTime").innerHTML =`${toWordboxString(formatTime(READING_TIME))}`;
+document.querySelector("#answerTime").innerHTML =`${toWordboxString(formatTime(ANSWER_TIME))}`;
 document.querySelector("#answer").style.display = "none";
 document.querySelector("#submitbutton").style.display = "none";
 document.querySelector(".scorebox").style.display = "none";
