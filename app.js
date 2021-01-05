@@ -1,5 +1,5 @@
-const WORD_LIST_1 = ["buyer", "secret", "base", "night", "because", "away", "fold", "fame", "fall", "animal", "fantasy", "list", "monitor", "hill", "caution", "fuel", "retreat", "club", "slot", "lobster", "surge", "bone", "rapid", "link"].sort(() => Math.random() - 0.5);
-const WORD_LIST_2 = ["duty", "wink", "jaguar", "session", "any", "theory", "renew", "vessel", "soul", "produce", "glance", "nerve", "creek", "since", "beauty", "panel", "twenty", "half", "smooth", "ozone", "road", "bitter", "burger", "alpha"].sort(() => Math.random() - 0.5);
+const WORD_LIST_1 = ["mountain", "pendant", "fly", "evening", "scent", "far", "frame", "flow", "tide", "moon", "elegant", "melody", "television", "bill", "door", "gas", "meditation", "bar", "card", "jellyfish", "urge", "crow", "bird", "church"].sort(() => Math.random() - 0.5);
+const WORD_LIST_2 = ["store", "pink", "lag", "plant", "all", "idea", "new", "glass", "heart", "prince", "glare", "brain", "creep", "sky", "sincere", "lenient", "eleven", "car", "calf", "zone", "path", "sweet", "king", "omega"].sort(() => Math.random() - 0.5);
 
 const READING_TIME = 120; // Both given in seconds
 const ANSWER_TIME = 120;
